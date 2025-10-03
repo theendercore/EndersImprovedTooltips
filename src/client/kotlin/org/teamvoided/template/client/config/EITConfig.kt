@@ -1,0 +1,23 @@
+package org.teamvoided.template.client.config
+
+import me.fzzyhmstrs.fzzy_config.config.Config
+import me.fzzyhmstrs.fzzy_config.config.ConfigGroup
+import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedEnum
+import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt
+import net.minecraft.ChatFormatting
+import org.teamvoided.template.Template.MODID
+import org.teamvoided.template.Template.id
+
+class EITConfig : Config(id(MODID)) {
+    val indentSpaces = ValidatedInt(2, 0..16)
+
+    @Suppress("unused")
+    var enchantments = ConfigGroup("enchantments", false)
+
+    var enchantmentColor = ValidatedEnum(ChatFormatting.GREEN)
+    var maxLevelColor = ValidatedEnum(ChatFormatting.GOLD)
+    var aboveMaxLevelColor = ValidatedEnum(ChatFormatting.YELLOW)
+
+    @ConfigGroup.Pop
+    var curseColor = ValidatedEnum(ChatFormatting.RED)
+}
