@@ -20,4 +20,17 @@ class EITConfig : Config(id(MODID)) {
 
     @ConfigGroup.Pop
     var curseColor = ValidatedEnum(ChatFormatting.RED)
+
+    @Suppress("unused")
+    var fireworks = ConfigGroup("fireworks", false)
+
+    var shapeColor = ValidatedEnum(ChatFormatting.GOLD)
+    var colorEntriesUseCustomColors = true
+    var colorEntryColor = ValidatedEnum(ChatFormatting.GREEN)
+    var twinkleColor = ValidatedEnum(ChatFormatting.YELLOW)
+    var trailColor = ValidatedEnum(ChatFormatting.YELLOW)
+
+
+    @ConfigGroup.Pop
+    var customColorsAsHex = true
 }

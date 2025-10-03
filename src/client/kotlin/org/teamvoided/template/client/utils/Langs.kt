@@ -1,4 +1,4 @@
-package org.teamvoided.template.client.toolitp
+package org.teamvoided.template.client.utils
 
 const val ENCHANTMENTS = "item.enders_improved_tooltips.enchantments"
 const val SHAPE = "item.enders_improved_tooltips.shape"

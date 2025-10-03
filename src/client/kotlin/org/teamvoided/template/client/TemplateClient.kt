@@ -16,4 +16,5 @@ object TemplateClient {
     }
 
     fun getIndent(): MutableComponent = Component.literal(" ".repeat(config.indentSpaces.get()))
+    fun indented(lang: Component): MutableComponent = getIndent().append(lang)
 }

@@ -16,6 +16,7 @@ import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.item.enchantment.Enchantment
 import org.teamvoided.template.client.TemplateClient.config
 import org.teamvoided.template.client.TemplateClient.getIndent
+import org.teamvoided.template.client.utils.ENCHANTMENTS
 import java.util.function.Consumer
 
 fun enchantmentTooltips(

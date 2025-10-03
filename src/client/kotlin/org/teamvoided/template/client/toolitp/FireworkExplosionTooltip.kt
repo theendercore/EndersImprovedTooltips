@@ -1,71 +1,53 @@
 package org.teamvoided.template.client.toolitp
 
-import it.unimi.dsi.fastutil.ints.IntList
-import net.minecraft.ChatFormatting
-import net.minecraft.network.chat.CommonComponents
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.MutableComponent
 import net.minecraft.world.item.DyeColor
 import net.minecraft.world.item.component.FireworkExplosion
+import org.teamvoided.template.client.TemplateClient.config
+import org.teamvoided.template.client.utils.*
 import java.util.function.Consumer
 
-fun fireworkExplosionTooltip(fireworkExplosion: FireworkExplosion, consumer: Consumer<Component>) {
-    consumer.accept(
-        Component.translatable(SHAPE).withStyle(ChatFormatting.GRAY)
-            .append(fireworkExplosion.shape.getName().withStyle(ChatFormatting.GOLD))
-    )
+val TRAIL = text("item.minecraft.firework_star.trail")
+val TWINKLE = text("item.minecraft.firework_star.flicker")
+val CUSTOM_COLOR_NAME = text("item.minecraft.firework_star.custom_color")
+val FADE_TO = text("item.minecraft.firework_star.fade_to")
 
-    if (!fireworkExplosion.colors.isEmpty()) consumer.accept(
-        Component.translatable(COLORS).withStyle(ChatFormatting.GRAY).append(
-            appendColors(
-                Component.empty().withStyle(ChatFormatting.GRAY),
-                fireworkExplosion.colors
-            )
-        )
-    )
+fun shapeTooltip(exp: FireworkExplosion, consumer: Consumer<Component>) {
+    consumer.accept(primaryText(SHAPE).append(exp.shape.getName().withStyle(config.shapeColor.get())))
+}
 
-    if (!fireworkExplosion.fadeColors.isEmpty()) {
-        consumer.accept(
-            appendColors(
-                Component.translatable("item.minecraft.firework_star.fade_to").append(CommonComponents.SPACE)
-                    .withStyle(ChatFormatting.GRAY), fireworkExplosion.fadeColors
-            )
-        )
+fun additionalTooltip(exp: FireworkExplosion, consumer: Consumer<Component>) {
+    if (exp.colors.isNotEmpty()) {
+        consumer.accept(appendList(indentedText(COLORS), exp.colors, ::getColorName))
     }
-
-    val effects = mutableListOf<Component>()
-    if (fireworkExplosion.hasTrail) {
-        effects.add(Component.translatable("item.minecraft.firework_star.trail").withStyle(ChatFormatting.AQUA))
+    if (exp.fadeColors.isNotEmpty()) {
+        consumer.accept(appendList(indentedText(FADE_TO).append(": "), exp.fadeColors, ::getColorName))
     }
-
-    if (fireworkExplosion.hasTwinkle) {
-        effects.add(Component.translatable("item.minecraft.firework_star.flicker").withStyle(ChatFormatting.YELLOW))
+    val effects = buildList {
+        if (exp.hasTrail) add(TRAIL.withStyle(config.trailColor.get()))
+        if (exp.hasTwinkle) add(TWINKLE.withStyle(config.twinkleColor.get()))
     }
     if (effects.isNotEmpty()) {
-        val effect = Component.translatable(EFFECTS).withStyle(ChatFormatting.GRAY)
-        for (i in effects.indices) {
-            if (i > 0) effect.append(", ")
-            effect.append(effects[i])
-        }
-
-        consumer.accept(effect)
+        consumer.accept(appendList(indentedText(EFFECTS), effects))
     }
 }
 
-fun appendColors(component: MutableComponent, intList: IntList): Component {
-    component.append("[ ")
-    for (i in intList.indices) {
-        if (i > 0) component.append(", ")
-        component.append(getColorName(intList.getInt(i)))
+fun getColorName(idx: Int): MutableComponent {
+    var text: MutableComponent
+    var color: Int
+
+    val dye = DyeColor.byFireworkColor(idx)
+    if (dye != null) {
+        color = dye.fireworkColor
+        text = text("item.minecraft.firework_star.${dye.getName()}")
+    } else {
+        color = idx
+        text = if (config.customColorsAsHex) hexText(idx) else CUSTOM_COLOR_NAME.copy()
     }
 
-    return component.append(" ]")
-}
-
-val CUSTOM_COLOR_NAME: MutableComponent = Component.translatable("item.minecraft.firework_star.custom_color")
-fun getColorName(i: Int): MutableComponent {
-    val dyeColor = DyeColor.byFireworkColor(i)
-        ?.let { Component.translatable("item.minecraft.firework_star.${it.getName()}").withColor(it.fireworkColor) }
-
-    return dyeColor ?: CUSTOM_COLOR_NAME
+    return if (config.colorEntriesUseCustomColors)
+        text.withColor(color)
+    else
+        text.withStyle(config.colorEntryColor.get())
 }
