@@ -30,9 +30,9 @@ repositories {
 //println("Task: " + gradle.startParameter.taskNames.joinToString(","))
 
 modSettings {
-    entrypoint("main", "org.teamvoided.template.Template::init")
-    entrypoint("client", "org.teamvoided.template.client.TemplateClient::init")
-    entrypoint("fabric-datagen", "org.teamvoided.template.data.gen.TemplateData")
+    entrypoint("main", "com.theendercore.enders_improved_tooltips.EndersImprovedTooltips::init")
+    entrypoint("client", "com.theendercore.enders_improved_tooltips.client.EndersImprovedTooltipsClient::init")
+    entrypoint("fabric-datagen", "com.theendercore.enders_improved_tooltips.data.gen.EndersImprovedTooltipsData")
 
     mixinFile("${modId()}.client.mixins.json")
     mixinFile("${modId()}.mixins.json")

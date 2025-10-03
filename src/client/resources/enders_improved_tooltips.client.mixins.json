@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.theendercore.enders_improved_tooltips.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "DyedItemColorMixin",
+    "FireworkExplosionMixin",
+    "ItemEnchantmentsMixin",
+    "JukeboxPlayableMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
