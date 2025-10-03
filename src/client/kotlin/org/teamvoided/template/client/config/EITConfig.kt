@@ -9,7 +9,8 @@ import org.teamvoided.template.Template.MODID
 import org.teamvoided.template.Template.id
 
 class EITConfig : Config(id(MODID)) {
-    val indentSpaces = ValidatedInt(2, 0..16)
+    var indentSpaces = ValidatedInt(2, 0..16)
+    var primaryTooltipColor = ValidatedEnum(ChatFormatting.GRAY)
 
     @Suppress("unused")
     var enchantments = ConfigGroup("enchantments", false)

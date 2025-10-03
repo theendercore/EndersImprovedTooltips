@@ -26,7 +26,7 @@ public class ItemEnchantmentsMixin {
     @Inject(method = "addToTooltip", at = @At("HEAD"), cancellable = true)
     private void run(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, CallbackInfo ci) {
         if (showInTooltip) {
-            enchantmentTooltips(enchantments,tooltipContext, consumer, tooltipFlag);
+            enchantmentTooltips(enchantments, tooltipContext, consumer);
         }
         ci.cancel();
     }

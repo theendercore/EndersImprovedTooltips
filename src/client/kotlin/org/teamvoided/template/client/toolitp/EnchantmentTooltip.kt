@@ -12,21 +12,20 @@ import net.minecraft.network.chat.ComponentUtils
 import net.minecraft.network.chat.Style
 import net.minecraft.tags.EnchantmentTags
 import net.minecraft.world.item.Item
-import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.item.enchantment.Enchantment
 import org.teamvoided.template.client.TemplateClient.config
-import org.teamvoided.template.client.TemplateClient.getIndent
 import org.teamvoided.template.client.utils.ENCHANTMENTS
+import org.teamvoided.template.client.utils.indentedText
+import org.teamvoided.template.client.utils.primaryText
 import java.util.function.Consumer
 
 fun enchantmentTooltips(
-    enchantments: Object2IntOpenHashMap<Holder<Enchantment>>,
-    ctx: Item.TooltipContext, consumer: Consumer<Component>, flag: TooltipFlag,
+    enchantments: Object2IntOpenHashMap<Holder<Enchantment>>, ctx: Item.TooltipContext, consumer: Consumer<Component>,
 ) {
     if (enchantments.isEmpty()) return
 
     val holderSet = getTooltipOrder(ctx.registries())
-    consumer.accept(Component.translatable(ENCHANTMENTS).withStyle(ChatFormatting.GRAY))
+    consumer.accept(primaryText(ENCHANTMENTS))
     for (holder in holderSet) {
         val level = enchantments.getInt(holder)
         if (level > 0) {
@@ -50,7 +49,7 @@ fun getTooltipOrder(provider: HolderLookup.Provider?): HolderSet<Enchantment> {
 }
 
 fun getFullName(holder: Holder<Enchantment>, level: Int): Component {
-    val enchantment = getIndent().append(holder.value().description.copy())
+    val enchantment = indentedText(holder.value().description.copy())
     val isMaxLevel = holder.value().maxLevel <= level
 
     val color =
