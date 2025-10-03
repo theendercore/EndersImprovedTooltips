@@ -2,6 +2,9 @@
   "item.enders_improved_tooltips.enchantments": "Enchantments:",
   "item.enders_improved_tooltips.shape": "Shape: ",
   "item.enders_improved_tooltips.colors": "Colors: ",
-  "item.enders_improved_tooltips.effects": "Effects: "
-
+  "item.enders_improved_tooltips.effects": "Effects: ",
+  "item.enders_improved_tooltips.title": "Title: ",
+  "item.enders_improved_tooltips.author":"Author: ",
+  "item.enders_improved_tooltips.comparator_output": "Comparator Output: ",
+  "item.enders_improved_tooltips.song_length": "Song Length: "
 }

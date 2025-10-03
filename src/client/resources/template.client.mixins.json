@@ -4,11 +4,14 @@
   "package": "org.teamvoided.template.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ItemEnchantmentsMixin",
     "DyedItemColorMixin",
-    "FireworkExplosionMixin"
+    "FireworkExplosionMixin",
+    "ItemEnchantmentsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "mixins": [
+    "JukeboxPlayableMixin"
+  ]
 }

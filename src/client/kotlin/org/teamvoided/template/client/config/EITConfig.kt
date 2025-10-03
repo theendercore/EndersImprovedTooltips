@@ -14,7 +14,6 @@ class EITConfig : Config(id(MODID)) {
 
     @Suppress("unused")
     var enchantments = ConfigGroup("enchantments", false)
-
     var enchantmentColor = ValidatedEnum(ChatFormatting.GREEN)
     var maxLevelColor = ValidatedEnum(ChatFormatting.GOLD)
     var aboveMaxLevelColor = ValidatedEnum(ChatFormatting.YELLOW)
@@ -24,7 +23,6 @@ class EITConfig : Config(id(MODID)) {
 
     @Suppress("unused")
     var fireworks = ConfigGroup("fireworks", false)
-
     var shapeColor = ValidatedEnum(ChatFormatting.GOLD)
     var colorEntriesUseCustomColors = true
     var colorEntryColor = ValidatedEnum(ChatFormatting.GREEN)
@@ -34,4 +32,14 @@ class EITConfig : Config(id(MODID)) {
 
     @ConfigGroup.Pop
     var customColorsAsHex = true
+
+    @Suppress("unused")
+    var jukeboxPlayable = ConfigGroup("jukebox_playable", false)
+    var titleColor = ValidatedEnum(ChatFormatting.GOLD)
+    var authorColor = ValidatedEnum(ChatFormatting.YELLOW)
+    var comparatorOutputColor = ValidatedEnum(ChatFormatting.RED)
+
+    @ConfigGroup.Pop
+    var songLengthColor = ValidatedEnum(ChatFormatting.GREEN)
+
 }
