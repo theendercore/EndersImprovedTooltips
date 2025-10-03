@@ -1,7 +1,6 @@
 package org.teamvoided.template.client.toolitp
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap
-import net.minecraft.ChatFormatting
 import net.minecraft.core.Holder
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.HolderSet
@@ -20,22 +19,22 @@ import org.teamvoided.template.client.utils.primaryText
 import java.util.function.Consumer
 
 fun enchantmentTooltips(
-    enchantments: Object2IntOpenHashMap<Holder<Enchantment>>, ctx: Item.TooltipContext, consumer: Consumer<Component>,
+    enchants: Object2IntOpenHashMap<Holder<Enchantment>>, ctx: Item.TooltipContext, c: Consumer<Component>,
 ) {
-    if (enchantments.isEmpty()) return
+    if (enchants.isEmpty()) return
 
     val holderSet = getTooltipOrder(ctx.registries())
-    consumer.accept(primaryText(ENCHANTMENTS))
+    c.accept(primaryText(ENCHANTMENTS))
     for (holder in holderSet) {
-        val level = enchantments.getInt(holder)
+        val level = enchants.getInt(holder)
         if (level > 0) {
-            consumer.accept(getFullName(holder, level))
+            c.accept(getFullName(holder, level))
         }
     }
 
-    for ((key, level) in enchantments.object2IntEntrySet()) {
+    for ((key, level) in enchants.object2IntEntrySet()) {
         if (!holderSet.contains(key)) {
-            consumer.accept(getFullName(key, level))
+            c.accept(getFullName(key, level))
         }
     }
 }
