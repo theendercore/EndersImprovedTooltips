@@ -13,7 +13,7 @@ class EITConfig : Config(id(MODID)) {
     var primaryTooltipColor = ValidatedEnum(ChatFormatting.GRAY)
 
     @Suppress("unused")
-    var enchantments = ConfigGroup("enchantments", false)
+    var enchantments = ConfigGroup("enchantments", true)
     var enchantmentColor = ValidatedEnum(ChatFormatting.GREEN)
     var maxLevelColor = ValidatedEnum(ChatFormatting.GOLD)
     var aboveMaxLevelColor = ValidatedEnum(ChatFormatting.YELLOW)
@@ -22,7 +22,7 @@ class EITConfig : Config(id(MODID)) {
     var curseColor = ValidatedEnum(ChatFormatting.RED)
 
     @Suppress("unused")
-    var fireworks = ConfigGroup("fireworks", false)
+    var fireworks = ConfigGroup("fireworks", true)
     var shapeColor = ValidatedEnum(ChatFormatting.GOLD)
     var colorEntriesUseCustomColors = true
     var colorEntryColor = ValidatedEnum(ChatFormatting.GREEN)
@@ -34,7 +34,7 @@ class EITConfig : Config(id(MODID)) {
     var customColorsAsHex = true
 
     @Suppress("unused")
-    var jukeboxPlayable = ConfigGroup("jukebox_playable", false)
+    var jukeboxPlayable = ConfigGroup("jukebox_playable", true)
     var titleColor = ValidatedEnum(ChatFormatting.GOLD)
     var authorColor = ValidatedEnum(ChatFormatting.YELLOW)
     var comparatorOutputColor = ValidatedEnum(ChatFormatting.RED)
