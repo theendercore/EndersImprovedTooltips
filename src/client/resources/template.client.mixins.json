@@ -4,7 +4,9 @@
   "package": "org.teamvoided.template.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ExampleMixin"
+    "ItemEnchantmentsMixin",
+    "DyedItemColorMixin",
+    "FireworkExplosionMixin"
   ],
   "injectors": {
     "defaultRequire": 1
