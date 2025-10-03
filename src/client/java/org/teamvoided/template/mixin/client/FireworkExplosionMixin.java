@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Consumer;
 
-import static org.teamvoided.template.client.toolitp.FireworkExplosionTooltipKt.additionalTooltip;
-import static org.teamvoided.template.client.toolitp.FireworkExplosionTooltipKt.shapeTooltip;
+import static org.teamvoided.template.client.toolitp.FireworkTooltipKt.additionalTooltip;
+import static org.teamvoided.template.client.toolitp.FireworkTooltipKt.shapeTooltip;
 
 @Mixin(FireworkExplosion.class)
 public class FireworkExplosionMixin {
