@@ -26,7 +26,7 @@ fun discTooltips(playable: JukeboxPlayable, tooltipContext: Item.TooltipContext,
         c.accept(primaryText(AUTHOR).append(rawText(descInfo[0], config.authorColor.get())))
     }
 
-    if (TemplateClient.hasShift()) {
+    if (!config.extraInfoRequiresShift || TemplateClient.hasShift()) {
         c.accept(
             primaryText(COMP_OUTPUT)
                 .append(rawText("${song.comparatorOutput()}", config.comparatorOutputColor.get()))

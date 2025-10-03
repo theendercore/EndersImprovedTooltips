@@ -38,8 +38,9 @@ class EITConfig : Config(id(MODID)) {
     var titleColor = ValidatedEnum(ChatFormatting.GOLD)
     var authorColor = ValidatedEnum(ChatFormatting.YELLOW)
     var comparatorOutputColor = ValidatedEnum(ChatFormatting.RED)
+    var songLengthColor = ValidatedEnum(ChatFormatting.GREEN)
 
     @ConfigGroup.Pop
-    var songLengthColor = ValidatedEnum(ChatFormatting.GREEN)
+    var extraInfoRequiresShift = true
 
 }
